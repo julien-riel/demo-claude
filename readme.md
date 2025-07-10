@@ -1,0 +1,2 @@
+Ce projet est simulateur de portefeuille boursier utilisant les données de la bourse de new york.
+Il permet de saisir (via un formulaire ou importation) des transaction de titres. On peut calculer le rendement personnel xirr à une moment dans le passé ou actuel
