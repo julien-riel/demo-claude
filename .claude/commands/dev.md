@@ -1,22 +1,11 @@
-# /dev Command Documentation
 
-## Overview
-The `/dev` command automates the complete development workflow from GitHub issue to pull request.
-
-## Usage
-```bash
-/dev <issue_number>
-```
-
-## Example
-```bash
-/dev 1
-```
-
-## What it does
+---
+description: "Work on a issue from github"
+allowed-tools: "Bash(npm run test:*), Read(tests/**), Read(src/**)"
+---
 
 ### 1. 📋 Read GitHub Issue
-- Fetches issue details using GitHub CLI
+- Fetches issue details using GitHub CLI with #$ARGUMENTS
 - Extracts title, body, labels, and tasks
 - Validates issue exists and is accessible
 
