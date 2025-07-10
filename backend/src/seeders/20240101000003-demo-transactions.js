@@ -1,0 +1,90 @@
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert('transactions', [
+      // Demo user transactions
+      {
+        id: '650e8400-e29b-41d4-a716-446655440001',
+        user_id: '550e8400-e29b-41d4-a716-446655440001',
+        symbol: 'AAPL',
+        type: 'BUY',
+        quantity: 10,
+        price: 150.00,
+        transaction_date: '2024-01-15',
+        fees: 9.99,
+        notes: 'Initial Apple investment',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: '650e8400-e29b-41d4-a716-446655440002',
+        user_id: '550e8400-e29b-41d4-a716-446655440001',
+        symbol: 'GOOGL',
+        type: 'BUY',
+        quantity: 2,
+        price: 2500.00,
+        transaction_date: '2024-02-01',
+        fees: 9.99,
+        notes: 'Google investment',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: '650e8400-e29b-41d4-a716-446655440003',
+        user_id: '550e8400-e29b-41d4-a716-446655440001',
+        symbol: 'AAPL',
+        type: 'DIVIDEND',
+        quantity: 10,
+        price: 0.24,
+        transaction_date: '2024-05-15',
+        fees: 0,
+        notes: 'Quarterly dividend',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: '650e8400-e29b-41d4-a716-446655440004',
+        user_id: '550e8400-e29b-41d4-a716-446655440001',
+        symbol: 'MSFT',
+        type: 'BUY',
+        quantity: 5,
+        price: 380.00,
+        transaction_date: '2024-03-10',
+        fees: 9.99,
+        notes: 'Microsoft investment',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      // Investor user transactions
+      {
+        id: '650e8400-e29b-41d4-a716-446655440005',
+        user_id: '550e8400-e29b-41d4-a716-446655440002',
+        symbol: 'TSLA',
+        type: 'BUY',
+        quantity: 15,
+        price: 200.00,
+        transaction_date: '2024-01-20',
+        fees: 9.99,
+        notes: 'Tesla position',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: '650e8400-e29b-41d4-a716-446655440006',
+        user_id: '550e8400-e29b-41d4-a716-446655440002',
+        symbol: 'TSLA',
+        type: 'SELL',
+        quantity: 5,
+        price: 240.00,
+        transaction_date: '2024-04-15',
+        fees: 9.99,
+        notes: 'Partial profit taking',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ], {});
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('transactions', null, {});
+  }
+};

@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const path = require('path');
 require('dotenv').config();
 
 const config = {
@@ -48,4 +49,19 @@ const config = {
 const env = process.env.NODE_ENV || 'development';
 const sequelize = new Sequelize(config[env]);
 
-module.exports = { sequelize, config };
+// Validate connection function
+const validateConnection = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Database connection established successfully.');
+    return true;
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    return false;
+  }
+};
+
+// Export for both app usage and Sequelize CLI
+module.exports = config;
+module.exports.sequelize = sequelize;
+module.exports.validateConnection = validateConnection;

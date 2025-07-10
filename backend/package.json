@@ -11,7 +11,13 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint src/ --ext .js",
     "lint:fix": "eslint src/ --ext .js --fix",
-    "format": "prettier --write src/**/*.js"
+    "format": "prettier --write src/**/*.js",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate:undo": "sequelize-cli db:migrate:undo",
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:seed:undo": "sequelize-cli db:seed:undo:all",
+    "db:create": "sequelize-cli db:create",
+    "db:drop": "sequelize-cli db:drop"
   },
   "keywords": ["portfolio", "simulator", "stock", "api", "express"],
   "author": "Portfolio Simulator Team",
@@ -37,7 +43,8 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
-    "@types/jest": "^29.5.3"
+    "@types/jest": "^29.5.3",
+    "sequelize-cli": "^6.6.1"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -47,10 +54,14 @@
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.js",
-      "!src/server.js"
+      "!src/server.js",
+      "!src/migrations/**",
+      "!src/seeders/**"
     ],
     "testMatch": [
       "**/tests/**/*.test.js"
-    ]
+    ],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "testTimeout": 10000
   }
 }
